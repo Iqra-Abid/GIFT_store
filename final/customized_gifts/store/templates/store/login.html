@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p style="color:red;">{{ error }}</p>
+{% endblock %}

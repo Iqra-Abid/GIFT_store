@@ -1,0 +1,7 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Thank you for your order!</h2>
+<p>Order ID: {{ order.id }}</p>
+<p>We’ve sent confirmation to {{ order.guest_email }}</p>
+{% endblock %}
+

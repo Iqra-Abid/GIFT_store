@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero" style="background-image: url('{% static 'store/images/hero.jpg' %}'); background-size: cover; background-position: center; height: 80vh;">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <h1 class="text-white display-4">Welcome to Our Gift Store</h1>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Explore Our Products</h2>
+    <div class="text-center">
+        <a href="{% url 'product_list' %}" class="btn btn-primary btn-lg">View Products</a>
+    </div>
+</div>
+{% endblock %}

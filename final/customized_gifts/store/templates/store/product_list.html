@@ -1,0 +1,37 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Our Products</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">  <!-- Add some Bootstrap grid for layout -->
+            <div class="product">
+              <form method="post" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid" />
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Price: ₹{{ product.price }}</p>
+                
+                <!-- Hidden product ID -->
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                
+                <!-- Customization box -->
+                <label for="customization_{{ product.id }}">Customization:</label>
+                <input type="text" name="customization" id="customization_{{ product.id }}" placeholder="Enter your text" required>
+                
+                <!-- Quantity field -->
+                <label for="quantity_{{ product.id }}">Quantity:</label>
+                <input type="number" name="quantity" id="quantity_{{ product.id }}" value="1" min="1" required>
+        
+                <!-- Add to Cart button -->
+                <button type="submit" class="btn btn-primary mt-2">Add to Cart</button>
+              </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
